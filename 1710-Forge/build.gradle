@@ -1,0 +1,54 @@
+// Adjust the output jar name here
+archivesBaseName = "${mod_name}-Forge-1.7.10"
+
+dependencies {
+	implementation project(":Common")
+
+	annotationProcessor "com.github.bsideup.jabel:jabel-javac-plugin:${jabel_version}"
+	compileOnly "com.github.bsideup.jabel:jabel-javac-plugin:${jabel_version}"
+}
+
+// Maven Publishing. Remove if not needed
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId base.archivesName.get()
+			from components.java
+		}
+	}
+	repositories {
+		// Add your maven repository here
+		maven {
+			url "file://" + System.getenv("local_maven")
+		}
+	}
+}
+
+/**
+ * ===============================================================================
+ * =       DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING        =
+ * ===============================================================================
+ */
+
+unimined.minecraft {
+	mappings {
+		searge()
+		mcp("stable", "12-1.7.10")
+	}
+
+	minecraftForge {
+		loader forge_version+"-1.7.10"
+	}
+
+	defaultRemapJar = true
+}
+
+processResources {
+	from project(":Common").sourceSets.main.resources
+}
+
+compileTestJava.enabled = false
+
+tasks.withType(JavaCompile).configureEach {
+	source(project(":Common").sourceSets.main.allSource)
+}
