@@ -1,9 +1,9 @@
-package com.example;
+package com.author.examplemod;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-@Mod(modid = "modid")
+@Mod(modid = ModConstants.MODID)
 public class ExampleModForge {
 
 	public ExampleModForge() {
