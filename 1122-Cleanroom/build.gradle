@@ -38,6 +38,30 @@ unimined.minecraft {
 	defaultRemapJar = true
 }
 
+tasks.register("generateJson") {
+	group = "data"
+	description = "Generates item model JSONs from Java classes."
+
+	doLast {
+		javaexec {
+			mainClass = "fulcrum.cleanroom1122.gen.Generator"
+			classpath = sourceSets.main.runtimeClasspath
+		}
+	}
+}
+
+tasks.named("build") {
+	dependsOn("generateJson")
+}
+
+tasks.named("runClient") {
+	dependsOn("generateJson")
+}
+
+tasks.named("spotbugsMain") {
+	enabled = false
+}
+
 processResources {
 	from project(":Common").sourceSets.main.resources
 }

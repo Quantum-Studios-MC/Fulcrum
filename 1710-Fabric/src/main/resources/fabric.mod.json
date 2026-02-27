@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.author.examplemod.ExampleFabricMod"
+			"fulcrum.fabric1710.FabricModEntry"
 		]
 	},
 	"mixins": [

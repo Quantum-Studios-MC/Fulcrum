@@ -1,7 +1,7 @@
 {
 	"required": true,
 	"minVersion": "0.8",
-	"package": "com.author.examplemod.mixin",
+	"package": "com.author.examplemod.mixins",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [],
 	"client": [

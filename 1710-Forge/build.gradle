@@ -43,6 +43,10 @@ unimined.minecraft {
 	defaultRemapJar = true
 }
 
+tasks.named("spotbugsMain") {
+	enabled = false
+}
+
 processResources {
 	from project(":Common").sourceSets.main.resources
 }
