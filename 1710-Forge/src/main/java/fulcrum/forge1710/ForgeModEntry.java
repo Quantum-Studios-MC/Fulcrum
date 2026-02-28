@@ -12,7 +12,12 @@ public class ForgeModEntry {
 	public static final Logger LOGGER = LogManager.getLogger(ModEntry.modid);
 
 	public ForgeModEntry() {
+		runMain();
+	}
+
+	public static void runMain() {
 		FulcrumHooks.generateItems();
+		FulcrumHooks.generateRecipes();
 		Registrar.registerItems();
 	}
 
