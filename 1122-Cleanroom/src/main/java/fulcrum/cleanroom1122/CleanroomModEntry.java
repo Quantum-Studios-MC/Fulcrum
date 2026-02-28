@@ -28,7 +28,7 @@ public class CleanroomModEntry {
 	public void preInit(FMLPreInitializationEvent event) {
 		Side side = FMLCommonHandler.instance().getSide();
 		if(side.isClient()) {
-			ModelRegistrar.registerModelsPost();
+			ModelRegistrar.registerModels();
 		}
 		RecipeRegistrar.generateJsons();
 	}

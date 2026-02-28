@@ -166,9 +166,9 @@ subprojects {
 
 			it.options.encoding = "UTF-8"
 
-			it.sourceCompatibility = JavaVersion.VERSION_17;
-			it.targetCompatibility = JavaVersion.VERSION_17;
-			it.options.release = JavaVersion.VERSION_17
+			it.sourceCompatibility = 17;
+			it.targetCompatibility = 17;
+			it.options.release = 17
 
 			it.javaCompiler = javaToolchains.compilerFor {
 				languageVersion = JavaLanguageVersion.of(17)

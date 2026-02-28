@@ -7,6 +7,6 @@ public class Generator {
 		//Create Instance
 		CleanroomModEntry cleanroomModEntry = new CleanroomModEntry();
 
-		ModelRegistrar.registerModels();
+		ModelGenerator.registerModels();
 	}
 }
