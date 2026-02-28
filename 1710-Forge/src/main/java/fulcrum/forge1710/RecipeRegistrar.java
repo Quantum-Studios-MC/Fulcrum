@@ -51,21 +51,29 @@ public class RecipeRegistrar {
 	}
 
 	private static Object[] buildPatternParams(IItemStack[][] pattern) {
+		List<String> rows = new ArrayList<String>();
+		List<Object> mappings = new ArrayList<Object>();
 		char symbol = 'A';
-		List<Object> list = new ArrayList<>();
+
 		for (IItemStack[] row : pattern) {
 			StringBuilder sb = new StringBuilder();
 			for (IItemStack cell : row) {
-				sb.append(cell == null ? ' ' : symbol);
-				if (cell != null) {
-					list.add(symbol);
-					list.add(toStack(cell));
+				if(cell == null) {
+					sb.append(' ');
+				} else {
+					sb.append(symbol);
+					mappings.add(symbol);
+					mappings.add(toStack(cell));
+					symbol++;
 				}
-				symbol++;
 			}
-			list.add(sb.toString());
+			rows.add(sb.toString());
 		}
-		return list.toArray();
+
+		List<Object> result = new ArrayList<Object>();
+		result.addAll(rows);
+		result.addAll(mappings);
+		return result.toArray();
 	}
 
 
