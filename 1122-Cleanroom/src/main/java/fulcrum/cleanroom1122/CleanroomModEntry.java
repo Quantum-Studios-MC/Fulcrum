@@ -4,6 +4,7 @@ import com.author.examplemod.ExampleMod;
 import com.author.examplemod.ModEntry;
 import fulcrum.api.FulcrumHooks;
 import fulcrum.cleanroom1122.gen.ModelRegistrar;
+import fulcrum.cleanroom1122.gen.RecipeRegistrar;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,6 +19,7 @@ public class CleanroomModEntry {
 
 	public CleanroomModEntry() {
 		FulcrumHooks.generateItems();
+		FulcrumHooks.generateRecipes();
 		Registrar.registerItems();
 	}
 
@@ -28,6 +30,7 @@ public class CleanroomModEntry {
 		if(side.isClient()) {
 			ModelRegistrar.registerModelsPost();
 		}
+		RecipeRegistrar.generateJsons();
 	}
 
 	@Mod.EventHandler
