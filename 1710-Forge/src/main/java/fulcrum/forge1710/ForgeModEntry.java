@@ -19,11 +19,11 @@ public class ForgeModEntry {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		Registrar.register();
-		Registrar.registerRecipes();
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
+		RecipeRegistrar.registerRecipes();
 	}
 
 	@Mod.EventHandler

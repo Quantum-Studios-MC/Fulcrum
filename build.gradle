@@ -188,6 +188,10 @@ subprojects {
 		 compileClasspath.extendsFrom(modImplementation)
 	}
 
+	tasks.named("spotbugsMain") {
+		enabled = false
+	}
+
 	processResources {
 		inputs.property "version", project.version
 

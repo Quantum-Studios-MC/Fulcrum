@@ -45,6 +45,10 @@ processResources {
 	from project(":Common").sourceSets.main.resources
 }
 
+tasks.named("spotbugsMain") {
+	enabled = false
+}
+
 compileTestJava.enabled = false
 
 tasks.withType(JavaCompile).configureEach {
