@@ -1,8 +1,8 @@
 package fulcrum.cleanroom1122;
 
 import com.author.examplemod.ModEntry;
-import fulcrum.api.IItem;
-import fulcrum.api.ItemBase;
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.ItemBase;
 import fulcrum.api.Registry;
 import fulcrum.cleanroom1122.game.MCItemBase;
 import net.minecraft.item.Item;

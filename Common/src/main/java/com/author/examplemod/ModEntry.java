@@ -1,9 +1,9 @@
 package com.author.examplemod;
 
-import fulcrum.api.IItem;
-import fulcrum.api.ItemBase;
-import fulcrum.api.RecipeBase;
-import fulcrum.api.Registry;
+import fulcrum.api.*;
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.ItemBase;
+import fulcrum.api.items.ItemStackBase;
 
 public class ModEntry {
 	public static final String modid = "examplemod";
@@ -12,21 +12,16 @@ public class ModEntry {
 	public static void initialize() {
 	}
 
+	public static final IItem itemTest = new ItemBase("test").setTexture("test");
+
 	public static void generateItems() {
-		IItem itemTest = new ItemBase("test").setTexture("test");
 		Registry.registerItem(itemTest);
 	}
 
 	public static void generateRecipes() {
-		Registry.registerRecipe(
-			RecipeBase.shaped(
-				new ItemBase("test").setTexture("test"),
-				new IItem[][]{{
-					Registry.getItems().iterator().next(),
-					null,
-					null
-				}}
-			)
+		Registry.registerShapelessRecipe(
+			new ItemStackBase(itemTest, 5),
+			new ItemStackBase(itemTest, 1)
 		);
 	}
 }

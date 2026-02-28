@@ -12,18 +12,23 @@ public class ForgeModEntry {
 	public static final Logger LOGGER = LogManager.getLogger(ModEntry.modid);
 
 	public ForgeModEntry() {
+		runMain();
+	}
+
+	public static void runMain() {
 		FulcrumHooks.generateItems();
+		FulcrumHooks.generateRecipes();
 		Registrar.registerItems();
 	}
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		Registrar.register();
-		Registrar.registerRecipes();
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
+		RecipeRegistrar.registerRecipes();
 	}
 
 	@Mod.EventHandler

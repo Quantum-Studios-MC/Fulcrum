@@ -1,7 +1,7 @@
 package fulcrum.forge1710.game;
 
 import com.author.examplemod.ModEntry;
-import fulcrum.api.IItem;
+import fulcrum.api.items.IItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;

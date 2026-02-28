@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "examplemod:test",
+    "count": 5
+  },
+  "ingredients": [
+    {
+      "item": "examplemod:test"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

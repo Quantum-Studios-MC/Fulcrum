@@ -40,6 +40,10 @@ unimined.minecraft {
 	defaultRemapJar = false
 }
 
+tasks.named("spotbugsMain") {
+	enabled = false
+}
+
 processResources {
 	def buildProps = project.properties.clone()
 

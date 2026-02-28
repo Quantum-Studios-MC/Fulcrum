@@ -1,12 +1,18 @@
 package fulcrum.api;
 
-import fulcrum.impl.ItemRegistry;
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.IItemStack;
+import fulcrum.api.recipes.IRecipe;
+import fulcrum.api.recipes.ShapedRecipe;
+import fulcrum.api.recipes.ShapelessRecipe;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class Registry {
-	public static final ItemRegistry itemRegistry = new ItemRegistry();
-	private static final fulcrum.impl.Registry<IRecipe> recipeRegistry = new fulcrum.impl.Registry<>();
+	public static final RegistryType<IItem> itemRegistry = new RegistryType<>();
+	private static final RegistryType<IRecipe> recipeRegistry = new RegistryType<>();
 
 	public static void registerItem(IItem item) {
 		itemRegistry.register(item);
@@ -20,7 +26,27 @@ public class Registry {
 		recipeRegistry.register(recipe);
 	}
 
+	public static void registerShapedRecipe(IItemStack output, IItemStack[][] ingredients) {
+		if(output == null || ingredients == null) {
+			throw new RuntimeException("Cannot make a shaped recipe with a null argument");
+		}
+		registerRecipe(new ShapedRecipe("shaped_recipe_" + getRecipesSize(), output, ingredients));
+	}
+
+	public static void registerShapelessRecipe(IItemStack output, IItemStack... ingredients) {
+		if(output == null || ingredients == null) {
+			throw new RuntimeException("Cannot make a shapeless recipe with a null argument");
+		}
+		List<IItemStack> list = Arrays.asList(ingredients);
+		registerRecipe(new ShapelessRecipe("shapeless_recipe_" + getRecipesSize(), output, list));
+	}
+
 	public static Collection<IRecipe> getRecipes() {
 		return recipeRegistry.values();
 	}
+
+	public static int getRecipesSize() {
+		return recipeRegistry.size();
+	}
+
 }

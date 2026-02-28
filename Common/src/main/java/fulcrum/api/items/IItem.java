@@ -1,4 +1,6 @@
-package fulcrum.api;
+package fulcrum.api.items;
+
+import fulcrum.api.IRegistryObject;
 
 public interface IItem extends IRegistryObject {
 	default int getMaxStackSize() {

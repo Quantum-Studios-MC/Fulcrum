@@ -1,12 +1,10 @@
-package fulcrum.impl;
-
-import fulcrum.api.IRegistryObject;
+package fulcrum.api;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registry<T extends IRegistryObject> {
+public class RegistryType<T extends IRegistryObject> {
 	private final Map<String, T> entries = new HashMap<>();
 
 	public void register(T value) {
@@ -23,5 +21,9 @@ public class Registry<T extends IRegistryObject> {
 
 	public Collection<T> values() {
 		return entries.values();
+	}
+
+	public int size() {
+		return entries.size();
 	}
 }
