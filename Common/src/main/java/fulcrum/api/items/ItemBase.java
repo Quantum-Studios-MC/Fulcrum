@@ -1,4 +1,4 @@
-package fulcrum.api;
+package fulcrum.api.items;
 
 public class ItemBase implements IItem {
 	private final String registryName;

@@ -1,6 +1,9 @@
 package com.author.examplemod;
 
 import fulcrum.api.*;
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.ItemBase;
+import fulcrum.api.items.ItemStackBase;
 
 public class ModEntry {
 	public static final String modid = "examplemod";

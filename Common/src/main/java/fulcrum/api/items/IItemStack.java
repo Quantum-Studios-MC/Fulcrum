@@ -1,4 +1,4 @@
-package fulcrum.api;
+package fulcrum.api.items;
 
 public interface IItemStack {
 	IItem getItem();

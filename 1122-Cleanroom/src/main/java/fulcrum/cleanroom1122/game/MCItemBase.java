@@ -1,6 +1,6 @@
 package fulcrum.cleanroom1122.game;
 
-import fulcrum.api.IItem;
+import fulcrum.api.items.IItem;
 import net.minecraft.item.Item;
 
 public class MCItemBase extends Item {

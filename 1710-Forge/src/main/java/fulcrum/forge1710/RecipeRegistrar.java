@@ -2,8 +2,8 @@ package fulcrum.forge1710;
 
 import com.author.examplemod.ModEntry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fulcrum.api.IItem;
-import fulcrum.api.IItemStack;
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.IItemStack;
 import fulcrum.api.Registry;
 import fulcrum.api.recipes.IFurnaceRecipe;
 import fulcrum.api.recipes.IRecipe;

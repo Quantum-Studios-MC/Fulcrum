@@ -1,8 +1,8 @@
 package fulcrum.forge1710;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import fulcrum.api.IItem;
-import fulcrum.api.ItemBase;
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.ItemBase;
 import fulcrum.api.Registry;
 import fulcrum.forge1710.game.MCItemBase;
 

@@ -1,9 +1,10 @@
 package fulcrum.api;
 
+import fulcrum.api.items.IItem;
+import fulcrum.api.items.IItemStack;
 import fulcrum.api.recipes.IRecipe;
 import fulcrum.api.recipes.ShapedRecipe;
 import fulcrum.api.recipes.ShapelessRecipe;
-import fulcrum.impl.RegistryType;
 
 import java.util.Arrays;
 import java.util.Collection;

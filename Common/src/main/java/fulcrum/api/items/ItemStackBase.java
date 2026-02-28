@@ -1,4 +1,4 @@
-package fulcrum.api;
+package fulcrum.api.items;
 
 public class ItemStackBase implements IItemStack {
 	IItem item;

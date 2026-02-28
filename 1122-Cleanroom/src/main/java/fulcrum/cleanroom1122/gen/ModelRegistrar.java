@@ -1,7 +1,7 @@
 package fulcrum.cleanroom1122.gen;
 
 import com.author.examplemod.ModEntry;
-import fulcrum.api.IItem;
+import fulcrum.api.items.IItem;
 import fulcrum.cleanroom1122.Registrar;
 import fulcrum.cleanroom1122.game.MCItemBase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

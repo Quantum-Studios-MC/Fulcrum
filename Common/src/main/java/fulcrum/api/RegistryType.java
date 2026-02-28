@@ -1,6 +1,4 @@
-package fulcrum.impl;
-
-import fulcrum.api.IRegistryObject;
+package fulcrum.api;
 
 import java.util.Collection;
 import java.util.HashMap;

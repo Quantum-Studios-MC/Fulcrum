@@ -1,6 +1,6 @@
 package fulcrum.cleanroom1122.gen;
 
-import fulcrum.api.IItem;
+import fulcrum.api.items.IItem;
 import fulcrum.cleanroom1122.Registrar;
 import fulcrum.cleanroom1122.game.MCItemBase;
 

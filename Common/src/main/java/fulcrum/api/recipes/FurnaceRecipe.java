@@ -1,6 +1,6 @@
 package fulcrum.api.recipes;
 
-import fulcrum.api.IItemStack;
+import fulcrum.api.items.IItemStack;
 
 public class FurnaceRecipe implements IFurnaceRecipe {
 	private final IItemStack input;

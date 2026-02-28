@@ -1,7 +1,6 @@
 package fulcrum.api.recipes;
 
-import fulcrum.api.IItem;
-import fulcrum.api.IItemStack;
+import fulcrum.api.items.IItemStack;
 
 import java.util.List;
 
