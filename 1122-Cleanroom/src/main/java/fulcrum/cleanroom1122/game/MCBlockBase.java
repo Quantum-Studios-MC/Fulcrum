@@ -11,6 +11,7 @@ public class MCBlockBase extends Block implements IMCRegistryObject {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
 		setRegistryName(block.getRegistryName());
+		setTranslationKey(block.getRegistryName());
 	}
 
 	public IBlock getBlock() {

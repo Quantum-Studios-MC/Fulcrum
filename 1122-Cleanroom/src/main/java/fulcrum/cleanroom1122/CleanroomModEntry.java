@@ -4,7 +4,6 @@ import com.author.examplemod.ExampleMod;
 import com.author.examplemod.ModEntry;
 import fulcrum.api.PluginHooks;
 import fulcrum.cleanroom1122.game.MCMappings;
-import fulcrum.cleanroom1122.gen.ModelRegistrar;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -33,12 +32,14 @@ public class CleanroomModEntry {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		Side side = FMLCommonHandler.instance().getSide();
+		MCMappings.loadMappings();
+		Registrar.registerBlocks();
 		if(side.isClient()) {
-			Registrar.registerItems();
-			MCMappings.loadMappings();
-			Registrar.registerBlocks();
-
-			ModelRegistrar.registerModels();
+			new ModelRegistrar().registerItemBlockModels();
+		}
+		Registrar.registerItems();
+		if(side.isClient()) {
+			new ModelRegistrar().registerItemModels();
 		}
 	}
 

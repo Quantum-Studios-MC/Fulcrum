@@ -10,13 +10,15 @@ import fulcrum.api.items.ItemStackBase;
 
 public class ModRegistry {
 	public static final IItem itemTest = new ItemBase("test").setTexture("test");
+	public static final IItem itemTest2 = new ItemBase("test2").setTexture("test2");
 
 	@Plugin.Registry.Item()
 	public void generateItems() {
 		Registry.registerItem(itemTest);
+		Registry.registerItem(itemTest2);
 	}
 
-	public static final IBlock blockTest = new BlockBase("test_block").setTexture("test_block");
+	public static final IBlock blockTest = new BlockBase("test_solid_block").setTexture("test_solid_block");
 
 	@Plugin.Registry.Block()
 	public void generateBlocks() {

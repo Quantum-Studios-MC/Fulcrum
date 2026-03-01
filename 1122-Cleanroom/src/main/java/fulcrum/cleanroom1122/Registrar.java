@@ -18,8 +18,11 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = ModEntry.modid)
 public class Registrar {
@@ -69,8 +72,10 @@ public class Registrar {
 
 		CleanroomModEntry.LOGGER.info("Registered items:");
 		CleanroomModEntry.LOGGER.info(Registry.getItemsList());
-		event.getRegistry().registerAll(ITEMS.values().toArray(new Item[0]));
-		event.getRegistry().registerAll(ITEM_BLOCKS.values().toArray(new Item[0]));
+
+		IForgeRegistry<Item> reg = event.getRegistry();
+		reg.registerAll(ITEMS.values().toArray(new Item[0]));
+		reg.registerAll(ITEM_BLOCKS.values().toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
@@ -80,6 +85,8 @@ public class Registrar {
 
 		CleanroomModEntry.LOGGER.info("Registered blocks:");
 		CleanroomModEntry.LOGGER.info(Registry.getBlocksList());
-		event.getRegistry().registerAll(BLOCKS.values().toArray(new Block[0]));
+
+		IForgeRegistry<Block> reg = event.getRegistry();
+		reg.registerAll(BLOCKS.values().toArray(new Block[0]));
 	}
 }

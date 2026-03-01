@@ -10,7 +10,8 @@ public class MCItemBlockBase extends ItemBlock implements IMCRegistryObject {
 	public MCItemBlockBase(MCBlockBase block) {
 		super(block);
 		this.parentBlock = block.getBlock();
-		setRegistryName(block.getRegistryName());
+		setRegistryName(block.getBlock().getRegistryName());
+		setMaxStackSize(block.getBlock().getMaxStackSize());
 	}
 
 	public IBlock getParentBlock() {

@@ -69,6 +69,7 @@ public class ModelGenerator {
 		Map<String, Object> blockstate = new HashMap<>();
 		Map<String, Object> variants = new HashMap<>();
 		variants.put("normal", Map.of("model", modid + ":" + name));
+		variants.put("inventory", Map.of("model", modid + ":" + name + "#in_inventory"));
 		blockstate.put("variants", variants);
 
 		File blockstateFile = JSONUtils.createAssetsJSON("blockstates/" + name);
