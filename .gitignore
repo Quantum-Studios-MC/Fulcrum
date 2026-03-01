@@ -4,7 +4,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 old/
-
+1122-Cleanroom/src/main/resources/assets/**
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
