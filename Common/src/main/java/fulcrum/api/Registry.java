@@ -12,24 +12,24 @@ import java.util.Collection;
 import java.util.List;
 
 public class Registry {
-	public static final RegistryType<IItem> itemRegistry = new RegistryType<>();
-	private static final RegistryType<IBlock> blockRegistry = new RegistryType<>();
-	private static final RegistryType<IRecipe> recipeRegistry = new RegistryType<>();
+	public static final RegistryType<IItem> ITEMS_REGISTRY = new RegistryType<>();
+	private static final RegistryType<IBlock> BLOCKS_REGISTRY = new RegistryType<>();
+	private static final RegistryType<IRecipe> RECIPES_REGISTRY = new RegistryType<>();
 
 	public static void registerItem(IItem item) {
-		itemRegistry.register(item);
+		ITEMS_REGISTRY.register(item);
 	}
 
 	public static Collection<IItem> getItems() {
-		return itemRegistry.values();
+		return ITEMS_REGISTRY.values();
 	}
 
 	public static String getItemsList() {
-		return itemRegistry.toString();
+		return ITEMS_REGISTRY.toString();
 	}
 
 	public static void registerRecipe(IRecipe recipe) {
-		recipeRegistry.register(recipe);
+		RECIPES_REGISTRY.register(recipe);
 	}
 
 	public static void registerShapedRecipe(IItemStack output, IItemStack[][] ingredients) {
@@ -48,23 +48,23 @@ public class Registry {
 	}
 
 	public static Collection<IRecipe> getRecipes() {
-		return recipeRegistry.values();
+		return RECIPES_REGISTRY.values();
 	}
 
 	public static int getRecipesSize() {
-		return recipeRegistry.size();
+		return RECIPES_REGISTRY.size();
 	}
 
 	public static void registerBlock(IBlock block) {
-		blockRegistry.register(block);
+		BLOCKS_REGISTRY.register(block);
 	}
 
 	public static Collection<IBlock> getBlocks() {
-		return blockRegistry.values();
+		return BLOCKS_REGISTRY.values();
 	}
 
 	public static String getBlocksList() {
-		return blockRegistry.toString();
+		return BLOCKS_REGISTRY.toString();
 	}
 
 }

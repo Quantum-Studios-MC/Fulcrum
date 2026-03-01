@@ -1,9 +1,11 @@
 package fulcrum.cleanroom1122.game;
 
+import fulcrum.api.game.IMCRegistryObject;
+import fulcrum.api.IRegistryObject;
 import fulcrum.api.items.IItem;
 import net.minecraft.item.Item;
 
-public class MCItemBase extends Item {
+public class MCItemBase extends Item implements IMCRegistryObject {
 	private final IItem item;
 
 	public MCItemBase(IItem item) {
@@ -13,6 +15,11 @@ public class MCItemBase extends Item {
 	}
 
 	public IItem getItem() {
+		return item;
+	}
+
+	@Override
+	public IRegistryObject getDelegateRegistryObject$fulcrum() {
 		return item;
 	}
 }

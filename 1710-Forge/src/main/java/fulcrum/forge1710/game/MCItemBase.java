@@ -1,12 +1,12 @@
 package fulcrum.forge1710.game;
 
-import com.author.examplemod.ModEntry;
+import fulcrum.api.game.IMCRegistryObject;
+import fulcrum.api.IRegistryObject;
 import fulcrum.api.items.IItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.util.IIcon;
 
-public class MCItemBase extends Item {
+public class MCItemBase extends Item implements IMCRegistryObject {
 	private final IItem item;
 
 	public MCItemBase(IItem item) {
@@ -18,8 +18,14 @@ public class MCItemBase extends Item {
 		return item;
 	}
 
+
 	@Override
 	public void registerIcons(IIconRegister register) {
 		this.itemIcon = register.registerIcon(item.getModName() + ":" + item.getTextureName());
+	}
+
+	@Override
+	public IRegistryObject getDelegateRegistryObject$fulcrum() {
+		return item;
 	}
 }

@@ -1,6 +1,7 @@
 package fulcrum.cleanroom1122;
 
 import com.author.examplemod.ModEntry;
+import fulcrum.api.game.MCRegistryType;
 import fulcrum.api.blocks.BlockBase;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
@@ -18,18 +19,13 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Mod.EventBusSubscriber(modid = ModEntry.modid)
 public class Registrar {
-	public static final List<MCItemBase> ITEMS = new ArrayList<>();
-	public static final List<String> ITEM_NAMES = new ArrayList<>();
-	public static final List<MCItemBlockBase> ITEM_BLOCKS = new ArrayList<>();
-	public static final List<String> ITEM_BLOCK_NAMES = new ArrayList<>();
-	public static final List<MCBlockBase> BLOCKS = new ArrayList<>();
-	public static final List<String> BLOCK_NAMES = new ArrayList<>();
+	public static final MCRegistryType<MCItemBase> ITEMS = new MCRegistryType<>();
+	public static final MCRegistryType<MCItemBlockBase> ITEM_BLOCKS = new MCRegistryType<>();
+	public static final MCRegistryType<MCBlockBase> BLOCKS = new MCRegistryType<>();
 
 	public static void registerItems() {
 		Collection<IItem> list = Registry.getItems();
@@ -55,24 +51,15 @@ public class Registrar {
 	}
 
 	public static void registerItem(MCItemBase item) {
-		if(!ITEM_NAMES.contains(item.getItem().getRegistryName())) {
-			ITEMS.add(item);
-			ITEM_NAMES.add(item.getItem().getRegistryName());
-		}
+		ITEMS.register(item);
 	}
 
 	public static void registerBlock(MCBlockBase item) {
-		if(!BLOCK_NAMES.contains(item.getBlock().getRegistryName())) {
-			BLOCKS.add(item);
-			BLOCK_NAMES.add(item.getBlock().getRegistryName());
-		}
+		BLOCKS.register(item);
 	}
 
 	public static void registerItemBlock(MCItemBlockBase item) {
-		if(!ITEM_BLOCK_NAMES.contains(item.getParentBlock().getRegistryName())) {
-			ITEM_BLOCKS.add(item);
-			ITEM_BLOCK_NAMES.add(item.getParentBlock().getRegistryName());
-		}
+		ITEM_BLOCKS.register(item);
 	}
 
 	@SubscribeEvent
@@ -82,8 +69,8 @@ public class Registrar {
 
 		CleanroomModEntry.LOGGER.info("Registered items:");
 		CleanroomModEntry.LOGGER.info(Registry.getItemsList());
-		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
-		event.getRegistry().registerAll(ITEM_BLOCKS.toArray(new Item[0]));
+		event.getRegistry().registerAll(ITEMS.values().toArray(new Item[0]));
+		event.getRegistry().registerAll(ITEM_BLOCKS.values().toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
@@ -93,6 +80,6 @@ public class Registrar {
 
 		CleanroomModEntry.LOGGER.info("Registered blocks:");
 		CleanroomModEntry.LOGGER.info(Registry.getBlocksList());
-		event.getRegistry().registerAll(BLOCKS.toArray(new Block[0]));
+		event.getRegistry().registerAll(BLOCKS.values().toArray(new Block[0]));
 	}
 }

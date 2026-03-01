@@ -11,10 +11,10 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ModelRegistrar {
 	public static void registerModels() {
-		for(MCItemBase item : Registrar.ITEMS) {
+		for(MCItemBase item : Registrar.ITEMS.values()) {
 			generateSimpleItemResource(item);
 		}
-		for(MCItemBlockBase item : Registrar.ITEM_BLOCKS) {
+		for(MCItemBlockBase item : Registrar.ITEM_BLOCKS.values()) {
 			//generateSimpleItemBlockResource(item);
 		}
 	}

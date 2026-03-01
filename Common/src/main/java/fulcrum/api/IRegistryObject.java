@@ -6,5 +6,7 @@ public interface IRegistryObject {
 	default String getModName() {
 		return ModEntry.modid;
 	}
-	public String getRegistryName();
+	default String getRegistryName() {
+		return "";
+	}
 }
