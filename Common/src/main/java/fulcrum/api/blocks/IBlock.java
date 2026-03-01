@@ -23,9 +23,9 @@ public interface IBlock extends IRegistryObject {
 		return BlockType.BASIC;
 	}
 
-	BlockMaterial getMaterial();
+	IBlockMaterial getMaterial();
 
-	BlockSound getSound();
+	IBlockSound getSound();
 
 	float getHardness();
 

@@ -1,6 +1,6 @@
 package fulcrum.api.blocks;
 
-public enum BlockMaterial {
+public enum BlockMaterial implements IBlockMaterial {
 	ROCK,
 	WOOD,
 	GROUND,

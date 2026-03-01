@@ -2,6 +2,8 @@ package fulcrum.forge1710.game;
 
 import fulcrum.api.blocks.BlockMaterial;
 import fulcrum.api.blocks.BlockSound;
+import fulcrum.api.blocks.IBlockMaterial;
+import fulcrum.api.blocks.IBlockSound;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -9,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MCMappings {
-	public static Map<BlockMaterial, Material> materialMap = new HashMap<>();
-	public static Map<BlockSound, Block.SoundType> soundMap = new HashMap<>();
+	public static Map<IBlockMaterial, Material> materialMap = new HashMap<>();
+	public static Map<IBlockSound, Block.SoundType> soundMap = new HashMap<>();
 
 	public static void loadMappings() {
 		materialMap.put(BlockMaterial.ROCK, Material.rock);
@@ -28,11 +30,11 @@ public class MCMappings {
 		soundMap.put(BlockSound.CLOTH, Block.soundTypeCloth);
 	}
 
-	public static Material getMaterial(BlockMaterial material) {
+	public static Material getMaterial(IBlockMaterial material) {
 		return materialMap.get(material);
 	}
 
-	public static Block.SoundType getSound(BlockSound sound) {
+	public static Block.SoundType getSound(IBlockSound sound) {
 		return soundMap.get(sound);
 	}
 }

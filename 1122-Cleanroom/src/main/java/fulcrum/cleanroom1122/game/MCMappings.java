@@ -2,6 +2,8 @@ package fulcrum.cleanroom1122.game;
 
 import fulcrum.api.blocks.BlockMaterial;
 import fulcrum.api.blocks.BlockSound;
+import fulcrum.api.blocks.IBlockMaterial;
+import fulcrum.api.blocks.IBlockSound;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -10,8 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MCMappings {
-	public static Map<BlockMaterial, Material> materialMap = new HashMap<>();
-	public static Map<BlockSound, SoundType> soundMap = new HashMap<>();
+	public static Map<IBlockMaterial, Material> materialMap = new HashMap<>();
+	public static Map<IBlockSound, SoundType> soundMap = new HashMap<>();
 
 	public static void loadMappings() {
 		materialMap.put(BlockMaterial.ROCK, Material.ROCK);
@@ -29,11 +31,11 @@ public class MCMappings {
 		soundMap.put(BlockSound.CLOTH, SoundType.CLOTH);
 	}
 
-	public static Material getMaterial(BlockMaterial material) {
+	public static Material getMaterial(IBlockMaterial material) {
 		return materialMap.get(material);
 	}
 
-	public static SoundType getSound(BlockSound sound) {
+	public static SoundType getSound(IBlockSound sound) {
 		return soundMap.get(sound);
 	}
 }
