@@ -12,6 +12,7 @@ public class MCBlockBase extends Block implements IMCRegistryObject {
 	public MCBlockBase(IBlock block) {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
+		setUnlocalizedName(block.getModName() + "." + block.getRegistryName());
 	}
 
 	@Override

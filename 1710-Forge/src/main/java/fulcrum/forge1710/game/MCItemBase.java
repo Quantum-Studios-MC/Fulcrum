@@ -12,6 +12,7 @@ public class MCItemBase extends Item implements IMCRegistryObject {
 	public MCItemBase(IItem item) {
 		this.item = item;
 		setMaxStackSize(item.getMaxStackSize());
+		setUnlocalizedName(item.getModName() + "." + item.getRegistryName());
 	}
 
 	public IItem getItem() {

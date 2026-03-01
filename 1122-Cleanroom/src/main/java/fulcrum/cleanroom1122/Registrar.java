@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = ModEntry.modid)
 public class Registrar {
 	public static final MCRegistryType<MCItemBase> ITEMS = new MCRegistryType<>();
 	public static final MCRegistryType<MCItemBlockBase> ITEM_BLOCKS = new MCRegistryType<>();
@@ -65,20 +64,18 @@ public class Registrar {
 		ITEM_BLOCKS.register(item);
 	}
 
-	@SubscribeEvent
 	public static void registerItem(RegistryEvent.Register<Item> event) {
-		Registrar.registerItems();
 		Registrar.registerBlocks();
+		Registrar.registerItems();
 
 		CleanroomModEntry.LOGGER.info("Registered items:");
 		CleanroomModEntry.LOGGER.info(Registry.getItemsList());
 
 		IForgeRegistry<Item> reg = event.getRegistry();
-		reg.registerAll(ITEMS.values().toArray(new Item[0]));
 		reg.registerAll(ITEM_BLOCKS.values().toArray(new Item[0]));
+		reg.registerAll(ITEMS.values().toArray(new Item[0]));
 	}
 
-	@SubscribeEvent
 	public static void registerBlock(RegistryEvent.Register<Block> event) {
 		MCMappings.loadMappings();
 		Registrar.registerBlocks();

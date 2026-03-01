@@ -1,6 +1,5 @@
 package fulcrum.api.blocks;
 
-import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemBlock;
 import fulcrum.api.items.ItemBlockBase;
 
@@ -29,7 +28,7 @@ public class BlockBase implements IBlock {
 		return textureName;
 	}
 
-	public BlockBase setTexture(String textureName) {
+	public BlockBase setTextureName(String textureName) {
 		this.textureName = textureName;
 		return this;
 	}

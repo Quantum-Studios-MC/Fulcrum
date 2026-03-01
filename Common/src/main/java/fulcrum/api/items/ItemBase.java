@@ -18,7 +18,7 @@ public class ItemBase implements IItem {
 		return textureName;
 	}
 
-	public ItemBase setTexture(String textureName) {
+	public ItemBase setTextureName(String textureName) {
 		this.textureName = textureName;
 		return this;
 	}

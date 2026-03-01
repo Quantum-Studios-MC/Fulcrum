@@ -19,16 +19,16 @@ public class ForgeModEntry {
 	public static void runMain() {
 		PluginHooks.initialize();
 
-		PluginHooks.generateItems();
 		PluginHooks.generateBlocks();
+		PluginHooks.generateItems();
 
 		PluginHooks.generateRecipes();
 	}
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		Registrar.registerItem();
 		Registrar.registerBlock();
+		Registrar.registerItem();
 	}
 
 	@Mod.EventHandler
