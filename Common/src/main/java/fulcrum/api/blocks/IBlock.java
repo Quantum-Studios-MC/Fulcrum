@@ -23,11 +23,11 @@ public interface IBlock extends IRegistryObject {
 		return BlockType.BASIC;
 	}
 
-	default BlockMaterial getMaterial() {
-		return BlockMaterial.ROCK;
-	}
+	BlockMaterial getMaterial();
 
-	default BlockSound getSound() {
-		return BlockSound.STONE;
-	}
+	BlockSound getSound();
+
+	float getHardness();
+
+	float getResistance();
 }
