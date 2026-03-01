@@ -1,13 +1,13 @@
 package fulcrum.cleanroom1122;
 
-import com.author.examplemod.ModEntry;
+import fulcrum.api.registry.BlockRegistry;
+import fulcrum.api.registry.ItemRegistry;
 import fulcrum.api.game.MCRegistryType;
 import fulcrum.api.blocks.BlockBase;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemBlock;
 import fulcrum.api.items.ItemBase;
-import fulcrum.api.Registry;
 import fulcrum.api.items.ItemType;
 import fulcrum.cleanroom1122.game.MCBlockBase;
 import fulcrum.cleanroom1122.game.MCItemBase;
@@ -16,13 +16,9 @@ import fulcrum.cleanroom1122.game.MCMappings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class Registrar {
 	public static final MCRegistryType<MCItemBase> ITEMS = new MCRegistryType<>();
@@ -30,7 +26,7 @@ public class Registrar {
 	public static final MCRegistryType<MCBlockBase> BLOCKS = new MCRegistryType<>();
 
 	public static void registerItems() {
-		Collection<IItem> list = Registry.getItems();
+		Collection<IItem> list = ItemRegistry.getItems();
 		for(IItem item : list) {
 			if(item instanceof ItemBase) {
 				registerItem(new MCItemBase(item));
@@ -39,7 +35,7 @@ public class Registrar {
 	}
 
 	public static void registerBlocks() {
-		Collection<IBlock> list = Registry.getBlocks();
+		Collection<IBlock> list = BlockRegistry.getList();
 		for(IBlock item : list) {
 			if(item instanceof BlockBase) {
 				MCBlockBase block = new MCBlockBase(item);
@@ -69,7 +65,7 @@ public class Registrar {
 		Registrar.registerItems();
 
 		CleanroomModEntry.LOGGER.info("Registered items:");
-		CleanroomModEntry.LOGGER.info(Registry.getItemsList());
+		CleanroomModEntry.LOGGER.info(ItemRegistry.getItemsList());
 
 		IForgeRegistry<Item> reg = event.getRegistry();
 		reg.registerAll(ITEM_BLOCKS.values().toArray(new Item[0]));
@@ -81,7 +77,7 @@ public class Registrar {
 		Registrar.registerBlocks();
 
 		CleanroomModEntry.LOGGER.info("Registered blocks:");
-		CleanroomModEntry.LOGGER.info(Registry.getBlocksList());
+		CleanroomModEntry.LOGGER.info(BlockRegistry.getListText());
 
 		IForgeRegistry<Block> reg = event.getRegistry();
 		reg.registerAll(BLOCKS.values().toArray(new Block[0]));

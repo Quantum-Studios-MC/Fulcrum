@@ -1,13 +1,14 @@
 package fulcrum.forge1710;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import fulcrum.api.registry.BlockRegistry;
+import fulcrum.api.registry.ItemRegistry;
 import fulcrum.api.game.MCRegistryType;
 import fulcrum.api.blocks.BlockBase;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemBlock;
 import fulcrum.api.items.ItemBase;
-import fulcrum.api.Registry;
 import fulcrum.api.items.ItemType;
 import fulcrum.forge1710.game.MCBlockBase;
 import fulcrum.forge1710.game.MCItemBase;
@@ -20,7 +21,7 @@ public class Registrar {
 	public static final MCRegistryType<MCBlockBase> BLOCKS = new MCRegistryType<>();
 
 	public static void registerItems() {
-		Collection<IItem> list = Registry.getItems();
+		Collection<IItem> list = ItemRegistry.getItems();
 		for(IItem item : list) {
 			if(item instanceof ItemBase) {
 				registerItem(new MCItemBase(item));
@@ -29,7 +30,7 @@ public class Registrar {
 	}
 
 	public static void registerBlocks() {
-		Collection<IBlock> list = Registry.getBlocks();
+		Collection<IBlock> list = BlockRegistry.getList();
 		for(IBlock item : list) {
 			if(item instanceof BlockBase) {
 				registerBlock(new MCBlockBase(item));
@@ -53,7 +54,7 @@ public class Registrar {
 	}
 
 	public static void registerBlock() {
-		MCMappings.loadMaterialMappings();
+		MCMappings.loadMappings();
 		Registrar.registerBlocks();
 		for(MCBlockBase block : BLOCKS.values()) {
 			IItemBlock iItemBlock = block.getBlock().getItemBlock();

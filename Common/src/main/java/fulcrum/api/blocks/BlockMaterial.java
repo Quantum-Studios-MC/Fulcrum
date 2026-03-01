@@ -1,5 +1,9 @@
 package fulcrum.api.blocks;
 
 public enum BlockMaterial {
-	ROCK
+	ROCK,
+	WOOD,
+	GROUND,
+	CLOTH,
+	SAND
 }

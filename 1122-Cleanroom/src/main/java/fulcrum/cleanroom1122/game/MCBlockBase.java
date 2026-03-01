@@ -12,6 +12,7 @@ public class MCBlockBase extends Block implements IMCRegistryObject {
 		this.block = block;
 		setRegistryName(block.getRegistryName());
 		setTranslationKey(block.getModName() + "." + block.getRegistryName());
+		setSoundType(MCMappings.getSound(block.getSound()));
 	}
 
 	public IBlock getBlock() {

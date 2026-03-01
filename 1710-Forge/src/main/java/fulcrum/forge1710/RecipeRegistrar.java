@@ -4,11 +4,11 @@ import com.author.examplemod.ModEntry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemStack;
-import fulcrum.api.Registry;
 import fulcrum.api.recipes.IFurnaceRecipe;
 import fulcrum.api.recipes.IRecipe;
 import fulcrum.api.recipes.IShapedRecipe;
 import fulcrum.api.recipes.IShapelessRecipe;
+import fulcrum.api.registry.RecipeRegistry;
 import fulcrum.forge1710.game.MCItemBase;
 import net.minecraft.item.ItemStack;
 
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RecipeRegistrar {
 	public static void registerRecipes() {
-		for (IRecipe recipe : Registry.getRecipes()) {
+		for (IRecipe recipe : RecipeRegistry.getRecipes()) {
 			if(recipe instanceof IShapelessRecipe shapelessRecipe) {
 				addShapeless(shapelessRecipe);
 			}

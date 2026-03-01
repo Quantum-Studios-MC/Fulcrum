@@ -1,6 +1,9 @@
 package fulcrum.api;
 
 import com.author.examplemod.ModEntry;
+import fulcrum.api.registry.BlockRegistry;
+import fulcrum.api.registry.ItemRegistry;
+import fulcrum.api.registry.RecipeRegistry;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -22,18 +25,18 @@ public class PluginHooks {
 	}
 
 	public static void generateItems() {
-		invokeAnnotation(Plugin.Registry.Item.class);
+		invokeAnnotation(Plugin.Registry.Item.class, ItemRegistry.getInstance());
 	}
 
 	public static void generateBlocks() {
-		invokeAnnotation(Plugin.Registry.Block.class);
+		invokeAnnotation(Plugin.Registry.Block.class, BlockRegistry.getInstance());
 	}
 
 	public static void generateRecipes() {
-		invokeAnnotation(Plugin.Registry.Recipe.class);
+		invokeAnnotation(Plugin.Registry.Recipe.class, RecipeRegistry.getInstance());
 	}
 
-	public static void invokeAnnotation(Class<? extends Annotation> annotation) {
+	public static void invokeAnnotation(Class<? extends Annotation> annotation, Object object) {
 		for (Class<?> classObj : classPath) {
 			try {
 				Object instance = classObj.getDeclaredConstructor().newInstance();
@@ -42,7 +45,7 @@ public class PluginHooks {
 					if (method.isAnnotationPresent(annotation)) {
 
 						method.setAccessible(true);
-						method.invoke(instance);
+						method.invoke(instance, object);
 					}
 				}
 			} catch (Exception e) {

@@ -13,6 +13,7 @@ public class MCBlockBase extends Block implements IMCRegistryObject {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
 		setUnlocalizedName(block.getModName() + "." + block.getRegistryName());
+		setStepSound(MCMappings.getSound(block.getSound()));
 	}
 
 	@Override

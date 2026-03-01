@@ -1,14 +1,12 @@
 package fulcrum.cleanroom1122.gen;
 
-import fulcrum.api.Registry;
+import fulcrum.api.registry.BlockRegistry;
+import fulcrum.api.registry.ItemRegistry;
 import fulcrum.api.blocks.BlockType;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemBlock;
 import fulcrum.api.items.ItemType;
-import fulcrum.cleanroom1122.Registrar;
-import fulcrum.cleanroom1122.game.MCBlockBase;
-import fulcrum.cleanroom1122.game.MCItemBase;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +20,7 @@ public class ModelGenerator {
 	}
 
 	public static void generateItemsModelsJSON() {
-		for(IItem iitem : Registry.getItems()) {
+		for(IItem iitem : ItemRegistry.getItems()) {
 			try {
 				if(iitem.getType() == ItemType.BASIC) {
 					generateSimpleItemJson(iitem);
@@ -34,7 +32,7 @@ public class ModelGenerator {
 	}
 
 	public static void generateBlocksModelsJSON() {
-		for(IBlock iblock : Registry.getBlocks()) {
+		for(IBlock iblock : BlockRegistry.getList()) {
 			try {
 				IItemBlock iitemBlock = iblock.getItemBlock();
 				if(iblock.getType() == BlockType.BASIC) {

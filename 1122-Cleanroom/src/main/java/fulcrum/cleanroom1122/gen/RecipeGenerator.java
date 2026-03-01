@@ -1,13 +1,12 @@
 package fulcrum.cleanroom1122.gen;
 
-import com.author.examplemod.ModEntry;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemStack;
-import fulcrum.api.Registry;
 import fulcrum.api.recipes.IFurnaceRecipe;
 import fulcrum.api.recipes.IRecipe;
 import fulcrum.api.recipes.IShapedRecipe;
 import fulcrum.api.recipes.IShapelessRecipe;
+import fulcrum.api.registry.RecipeRegistry;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,7 @@ import java.util.*;
 
 public class RecipeGenerator {
 	public static void generateRecipesJSON() {
-		Collection<IRecipe> recipes = Registry.getRecipes();
+		Collection<IRecipe> recipes = RecipeRegistry.getRecipes();
 		for (IRecipe recipe : recipes) {
 			try {
 				writeRecipe(recipe);

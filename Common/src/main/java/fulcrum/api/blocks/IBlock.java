@@ -26,4 +26,8 @@ public interface IBlock extends IRegistryObject {
 	default BlockMaterial getMaterial() {
 		return BlockMaterial.ROCK;
 	}
+
+	default BlockSound getSound() {
+		return BlockSound.STONE;
+	}
 }
