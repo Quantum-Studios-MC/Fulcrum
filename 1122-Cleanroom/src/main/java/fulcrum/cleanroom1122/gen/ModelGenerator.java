@@ -87,11 +87,12 @@ public class ModelGenerator {
 	public static void generateSimpleItemBlockJson(IItemBlock itemBlock) throws IOException {
 		String modid = itemBlock.getModName();
 		String name = itemBlock.getRegistryName();
+		String texture = itemBlock.getTextureName();
 
 		Map<String, Object> itemModel = new HashMap<>();
 		itemModel.put("parent", modid + ":block/" + name);
 
-		File itemModelFile = JSONUtils.createAssetsJSON("models/item/" + name);
+		File itemModelFile = JSONUtils.createAssetsJSON("models/item/" + texture);
 		JSONUtils.writeFile(itemModelFile, itemModel);
 	}
 }
