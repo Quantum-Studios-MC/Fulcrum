@@ -26,4 +26,12 @@ public class RegistryType<T extends IRegistryObject> {
 	public int size() {
 		return entries.size();
 	}
+
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for(T value : values()) {
+			builder.append(value.getRegistryName());
+		}
+		return builder.toString();
+	}
 }

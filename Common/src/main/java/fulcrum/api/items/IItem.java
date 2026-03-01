@@ -19,7 +19,7 @@ public interface IItem extends IRegistryObject {
 		return false;
 	}
 
-	default boolean isSimpleItem() {
-		return true;
+	default ItemType getType() {
+		return ItemType.BASIC;
 	}
 }

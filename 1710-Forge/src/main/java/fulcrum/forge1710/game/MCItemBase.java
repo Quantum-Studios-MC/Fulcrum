@@ -8,7 +8,6 @@ import net.minecraft.util.IIcon;
 
 public class MCItemBase extends Item {
 	private final IItem item;
-	private IIcon icon;
 
 	public MCItemBase(IItem item) {
 		this.item = item;
@@ -21,6 +20,6 @@ public class MCItemBase extends Item {
 
 	@Override
 	public void registerIcons(IIconRegister register) {
-		this.itemIcon = register.registerIcon(ModEntry.modid + ":" + item.getTextureName());
+		this.itemIcon = register.registerIcon(item.getModName() + ":" + item.getTextureName());
 	}
 }

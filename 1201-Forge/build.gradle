@@ -39,6 +39,7 @@ unimined.minecraft {
 		parchment("2023.09.03")
 	}
 
+	defaultRemapJar = true
 }
 
 processResources {

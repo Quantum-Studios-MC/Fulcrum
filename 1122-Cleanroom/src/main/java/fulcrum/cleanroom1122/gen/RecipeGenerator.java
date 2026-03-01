@@ -119,7 +119,7 @@ public class RecipeGenerator {
 
 	private static Map<String, Object> buildResult(IItem item, int count) {
 		Map<String, Object> r = new HashMap<>();
-		r.put("item", ModEntry.modid + ":" + item.getRegistryName());
+		r.put("item", item.getModName() + ":" + item.getRegistryName());
 		r.put("count", count);
 		return r;
 	}
@@ -130,7 +130,7 @@ public class RecipeGenerator {
 
 	private static Map<String, Object> buildIngredients(IItem item) {
 		Map<String, Object> m = new HashMap<>();
-		m.put("item", ModEntry.modid + ":" + item.getRegistryName());
+		m.put("item", item.getModName() + ":" + item.getRegistryName());
 		return m;
 	}
 }

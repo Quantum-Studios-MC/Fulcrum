@@ -1,20 +1,14 @@
-package fulcrum.forge1710.game;
+package fulcrum.cleanroom1122.game;
 
 import fulcrum.api.blocks.IBlock;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
 
 public class MCBlockBase extends Block {
 	private final IBlock block;
-
 	public MCBlockBase(IBlock block) {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
-	}
-
-	@Override
-	public void registerIcons(IIconRegister register) {
-		this.blockIcon = register.registerIcon(block.getModName() + ":" + block.getTextureName());
+		setRegistryName(block.getRegistryName());
 	}
 
 	public IBlock getBlock() {

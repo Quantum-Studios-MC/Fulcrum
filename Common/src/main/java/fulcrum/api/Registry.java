@@ -1,5 +1,6 @@
 package fulcrum.api;
 
+import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemStack;
 import fulcrum.api.recipes.IRecipe;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class Registry {
 	public static final RegistryType<IItem> itemRegistry = new RegistryType<>();
+	private static final RegistryType<IBlock> blockRegistry = new RegistryType<>();
 	private static final RegistryType<IRecipe> recipeRegistry = new RegistryType<>();
 
 	public static void registerItem(IItem item) {
@@ -20,6 +22,10 @@ public class Registry {
 
 	public static Collection<IItem> getItems() {
 		return itemRegistry.values();
+	}
+
+	public static String getItemsList() {
+		return itemRegistry.toString();
 	}
 
 	public static void registerRecipe(IRecipe recipe) {
@@ -47,6 +53,18 @@ public class Registry {
 
 	public static int getRecipesSize() {
 		return recipeRegistry.size();
+	}
+
+	public static void registerBlock(IBlock block) {
+		blockRegistry.register(block);
+	}
+
+	public static Collection<IBlock> getBlocks() {
+		return blockRegistry.values();
+	}
+
+	public static String getBlocksList() {
+		return blockRegistry.toString();
 	}
 
 }

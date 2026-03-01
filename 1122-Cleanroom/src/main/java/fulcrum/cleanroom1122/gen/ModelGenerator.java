@@ -1,7 +1,13 @@
 package fulcrum.cleanroom1122.gen;
 
+import fulcrum.api.Registry;
+import fulcrum.api.blocks.BlockType;
+import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
+import fulcrum.api.items.IItemBlock;
+import fulcrum.api.items.ItemType;
 import fulcrum.cleanroom1122.Registrar;
+import fulcrum.cleanroom1122.game.MCBlockBase;
 import fulcrum.cleanroom1122.game.MCItemBase;
 
 import java.io.File;
@@ -11,11 +17,31 @@ import java.util.Map;
 
 public class ModelGenerator {
 	public static void generateModelsJSON() {
-		for(MCItemBase item : Registrar.ITEMS) {
+		generateItemsModelsJSON();
+		generateBlocksModelsJSON();
+	}
+
+	public static void generateItemsModelsJSON() {
+		for(IItem iitem : Registry.getItems()) {
 			try {
-				IItem iitem = item.getItem();
-				if(iitem.isSimpleItem()) {
-					generateSimpleItemJson(item.getItem());
+				if(iitem.getType() == ItemType.BASIC) {
+					generateSimpleItemJson(iitem);
+				}
+			} catch (IOException ignored) {
+
+			}
+		}
+	}
+
+	public static void generateBlocksModelsJSON() {
+		for(IBlock iblock : Registry.getBlocks()) {
+			try {
+				IItemBlock iitemBlock = iblock.getItemBlock();
+				if(iblock.getType() == BlockType.BASIC) {
+					generateSimpleBlockJson(iblock);
+				}
+				if(iitemBlock.getType() == ItemType.BLOCK) {
+					generateSimpleItemBlockJson(iitemBlock);
 				}
 			} catch (IOException ignored) {
 
@@ -33,5 +59,40 @@ public class ModelGenerator {
 
 		File output = JSONUtils.createAssetsJSON("models/item/" + item.getTextureName());
 		JSONUtils.writeFile(output, json);
+	}
+
+	public static void generateSimpleBlockJson(IBlock block) throws IOException {
+		String modid = block.getModName();
+		String name = block.getRegistryName();
+		String texture = block.getTextureName();
+
+		Map<String, Object> blockstate = new HashMap<>();
+		Map<String, Object> variants = new HashMap<>();
+		variants.put("normal", Map.of("model", modid + ":" + name));
+		blockstate.put("variants", variants);
+
+		File blockstateFile = JSONUtils.createAssetsJSON("blockstates/" + name);
+		JSONUtils.writeFile(blockstateFile, blockstate);
+
+		Map<String, Object> blockModel = new HashMap<>();
+		blockModel.put("parent", "block/cube_all");
+
+		Map<String, String> blockTextures = new HashMap<>();
+		blockTextures.put("all", modid + ":blocks/" + texture);
+		blockModel.put("textures", blockTextures);
+
+		File blockModelFile = JSONUtils.createAssetsJSON("models/block/" + name);
+		JSONUtils.writeFile(blockModelFile, blockModel);
+	}
+
+	public static void generateSimpleItemBlockJson(IItemBlock itemBlock) throws IOException {
+		String modid = itemBlock.getModName();
+		String name = itemBlock.getRegistryName();
+
+		Map<String, Object> itemModel = new HashMap<>();
+		itemModel.put("parent", modid + ":block/" + name);
+
+		File itemModelFile = JSONUtils.createAssetsJSON("models/item/" + name);
+		JSONUtils.writeFile(itemModelFile, itemModel);
 	}
 }

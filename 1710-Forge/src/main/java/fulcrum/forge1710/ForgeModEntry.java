@@ -3,7 +3,8 @@ package fulcrum.forge1710;
 import com.author.examplemod.ModEntry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.*;
-import fulcrum.api.FulcrumHooks;
+import fulcrum.api.PluginHooks;
+import fulcrum.forge1710.game.MCMappings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,14 +17,18 @@ public class ForgeModEntry {
 	}
 
 	public static void runMain() {
-		FulcrumHooks.generateItems();
-		FulcrumHooks.generateRecipes();
-		Registrar.registerItems();
+		PluginHooks.initialize();
+
+		PluginHooks.generateItems();
+		PluginHooks.generateBlocks();
+
+		PluginHooks.generateRecipes();
 	}
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		Registrar.register();
+		Registrar.registerItem();
+		Registrar.registerBlock();
 	}
 
 	@Mod.EventHandler

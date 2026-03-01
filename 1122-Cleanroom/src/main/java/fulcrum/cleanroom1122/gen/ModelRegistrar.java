@@ -2,18 +2,20 @@ package fulcrum.cleanroom1122.gen;
 
 import com.author.examplemod.ModEntry;
 import fulcrum.api.items.IItem;
+import fulcrum.api.items.ItemType;
 import fulcrum.cleanroom1122.Registrar;
 import fulcrum.cleanroom1122.game.MCItemBase;
+import fulcrum.cleanroom1122.game.MCItemBlockBase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 
 public class ModelRegistrar {
 	public static void registerModels() {
 		for(MCItemBase item : Registrar.ITEMS) {
-			IItem iitem = item.getItem();
-			if(iitem.isSimpleItem()) {
-				generateSimpleItemResource(item);
-			}
+			generateSimpleItemResource(item);
+		}
+		for(MCItemBlockBase item : Registrar.ITEM_BLOCKS) {
+			//generateSimpleItemBlockResource(item);
 		}
 	}
 
@@ -22,7 +24,18 @@ public class ModelRegistrar {
 			item,
 			0,
 			new ModelResourceLocation(
-				ModEntry.modid + ":" + item.getItem().getTextureName(),
+				item.getItem().getModName() + ":" + item.getItem().getRegistryName(),
+				"inventory"
+			)
+		);
+	}
+
+	public static void generateSimpleItemBlockResource(MCItemBlockBase item) {
+		ModelLoader.setCustomModelResourceLocation(
+			item,
+			0,
+			new ModelResourceLocation(
+				item.getParentBlock().getModName() + ":" + item.getParentBlock().getRegistryName(),
 				"inventory"
 			)
 		);
