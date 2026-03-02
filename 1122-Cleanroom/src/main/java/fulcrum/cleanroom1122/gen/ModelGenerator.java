@@ -1,5 +1,6 @@
 package fulcrum.cleanroom1122.gen;
 
+import fulcrum.api.blocks.BlockModelType;
 import fulcrum.api.registry.BlockRegistry;
 import fulcrum.api.registry.ItemRegistry;
 import fulcrum.api.blocks.BlockType;
@@ -34,11 +35,19 @@ public class ModelGenerator {
 	public static void generateBlocksModelsJSON() {
 		for(IBlock iblock : BlockRegistry.getList()) {
 			try {
-				IItemBlock iitemBlock = iblock.getItemBlock();
-				if(iblock.getType() == BlockType.BASIC) {
+				generateSimpleBlockStateJson(iblock);
+				if(iblock.getModelType() == BlockModelType.CUBE) {
 					generateSimpleBlockJson(iblock);
 				}
-				if(iitemBlock.getType() == ItemType.BLOCK) {
+				if(iblock.getModelType() == BlockModelType.CROSS) {
+					generateSimpleCrossBlockJson(iblock);
+				}
+
+				IItemBlock iitemBlock = iblock.getItemBlock();
+				if(iblock.getItemBlockType() == ItemType.BASIC) {
+					generateSimpleItemJson(iitemBlock);
+				}
+				if(iblock.getItemBlockType() == ItemType.BLOCK) {
 					generateSimpleItemBlockJson(iitemBlock);
 				}
 			} catch (IOException ignored) {
@@ -55,14 +64,25 @@ public class ModelGenerator {
 		textures.put("layer0", "examplemod:items/" + item.getTextureName());
 		json.put("textures", textures);
 
-		File output = JSONUtils.createAssetsJSON("models/item/" + item.getTextureName());
+		File output = JSONUtils.createAssetsJSON("models/item/" + item.getRegistryName());
 		JSONUtils.writeFile(output, json);
 	}
 
-	public static void generateSimpleBlockJson(IBlock block) throws IOException {
+	public static void generateSimpleItemJson(IItemBlock item) throws IOException {
+		Map<String, Object> json = new HashMap<>();
+
+		json.put("parent", "item/generated");
+		var textures = new java.util.HashMap<String, String>();
+		textures.put("layer0", "examplemod:blocks/" + item.getTextureName());
+		json.put("textures", textures);
+
+		File output = JSONUtils.createAssetsJSON("models/item/" + item.getRegistryName());
+		JSONUtils.writeFile(output, json);
+	}
+
+	public static void generateSimpleBlockStateJson(IBlock block) {
 		String modid = block.getModName();
 		String name = block.getRegistryName();
-		String texture = block.getTextureName();
 
 		Map<String, Object> blockstate = new HashMap<>();
 		Map<String, Object> variants = new HashMap<>();
@@ -72,12 +92,34 @@ public class ModelGenerator {
 
 		File blockstateFile = JSONUtils.createAssetsJSON("blockstates/" + name);
 		JSONUtils.writeFile(blockstateFile, blockstate);
+	}
+
+	public static void generateSimpleBlockJson(IBlock block) throws IOException {
+		String modid = block.getModName();
+		String name = block.getRegistryName();
+		String texture = block.getTextureName();
 
 		Map<String, Object> blockModel = new HashMap<>();
 		blockModel.put("parent", "block/cube_all");
 
 		Map<String, String> blockTextures = new HashMap<>();
 		blockTextures.put("all", modid + ":blocks/" + texture);
+		blockModel.put("textures", blockTextures);
+
+		File blockModelFile = JSONUtils.createAssetsJSON("models/block/" + name);
+		JSONUtils.writeFile(blockModelFile, blockModel);
+	}
+
+	public static void generateSimpleCrossBlockJson(IBlock block) throws IOException {
+		String modid = block.getModName();
+		String name = block.getRegistryName();
+		String texture = block.getTextureName();
+
+		Map<String, Object> blockModel = new HashMap<>();
+		blockModel.put("parent", "block/cross");
+
+		Map<String, String> blockTextures = new HashMap<>();
+		blockTextures.put("cross", modid + ":blocks/" + texture);
 		blockModel.put("textures", blockTextures);
 
 		File blockModelFile = JSONUtils.createAssetsJSON("models/block/" + name);

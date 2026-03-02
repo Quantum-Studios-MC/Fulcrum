@@ -1,6 +1,8 @@
 package fulcrum.api.items;
 
 import fulcrum.api.blocks.IBlock;
+import fulcrum.api.creativetabs.CreativeTab;
+import fulcrum.api.creativetabs.ICreativeTab;
 
 public class ItemBlockBase implements IItemBlock {
 	private final IBlock block;
@@ -16,7 +18,19 @@ public class ItemBlockBase implements IItemBlock {
 
 	@Override
 	public ItemType getType() {
+		if(block.getItemBlockType() != null) return block.getItemBlockType();
 		return ItemType.BLOCK;
+	}
+
+	@Override
+	public ICreativeTab getCreativeTab() {
+
+		return getCreativeTab();
+	}
+
+	@Override
+	public String getTextureName() {
+		return block.getTextureName();
 	}
 
 	@Override

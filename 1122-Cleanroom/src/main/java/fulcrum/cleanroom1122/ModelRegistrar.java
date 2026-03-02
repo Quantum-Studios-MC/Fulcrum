@@ -1,6 +1,8 @@
 package fulcrum.cleanroom1122;
 
 import com.author.examplemod.ModEntry;
+import fulcrum.api.game.IMCItem;
+import fulcrum.api.game.IMCItemBlock;
 import fulcrum.cleanroom1122.game.MCItemBase;
 import fulcrum.cleanroom1122.game.MCItemBlockBase;
 import fulcrum.cleanroom1122.game.MCMappings;
@@ -16,23 +18,23 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class ModelRegistrar {
 	public static void registerItemBlockModels() {
-		for(MCItemBlockBase item : Registrar.ITEM_BLOCKS.values()) {
+		for(IMCItemBlock item : Registrar.ITEM_BLOCKS.values()) {
 			generateItemResource(item);
 		}
 	}
 
 	public static void registerItemModels() {
-		for(MCItemBase item : Registrar.ITEMS.values()) {
+		for(IMCItem item : Registrar.ITEMS.values()) {
 			generateItemResource(item);
 		}
 	}
 
-	public static void generateItemResource(Item item) {
+	public static void generateItemResource(IMCItem item) {
 		ModelLoader.setCustomModelResourceLocation(
-			item,
+			(Item) item,
 			0,
 			new ModelResourceLocation(
-				new ResourceLocation(item.getRegistryName().toString()),
+				new ResourceLocation(item.getItem().getModName() + ":" + item.getItem().getRegistryName().toString()),
 				"inventory"
 			)
 		);

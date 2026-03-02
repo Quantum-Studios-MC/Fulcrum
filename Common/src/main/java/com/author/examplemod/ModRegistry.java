@@ -1,11 +1,9 @@
 package com.author.examplemod;
 
-import fulcrum.api.blocks.BlockMaterial;
+import fulcrum.api.blocks.*;
 import fulcrum.api.registry.BlockRegistry;
 import fulcrum.api.registry.ItemRegistry;
 import fulcrum.api.Plugin;
-import fulcrum.api.blocks.BlockBase;
-import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.ItemBase;
 import fulcrum.api.items.ItemStackBase;
@@ -26,10 +24,14 @@ public class ModRegistry {
 	public static final IBlock blockTest = new BlockBase("test_solid_block")
 		.setMaterial(BlockMaterial.ROCK)
 		.setTextureName("test_solid_block");
+	public static final IBlock blockBush = new BlockBushBase("test_bush")
+		.setMaterial(BlockMaterial.GROUND).setSound(BlockSound.PLANT)
+		.setTextureName("test_bush");
 
 	@Plugin.Registry.Block()
 	public void generateBlocks(BlockRegistry registry) {
 		registry.registerBlock(blockTest);
+		registry.registerBlock(blockBush);
 	}
 
 	@Plugin.Registry.Recipe()

@@ -1,15 +1,16 @@
 package fulcrum.cleanroom1122.game;
 
-import fulcrum.api.game.IMCBlock;
-import fulcrum.api.game.IMCRegistryObject;
 import fulcrum.api.IRegistryObject;
 import fulcrum.api.blocks.IBlock;
+import fulcrum.api.game.IMCBlock;
+import fulcrum.api.game.IMCRegistryObject;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
 
-public class MCBlockBase extends Block implements IMCBlock {
+public class MCBlockBushBase extends BlockBush implements IMCBlock {
 	private final IBlock block;
-	public MCBlockBase(IBlock block) {
+	public MCBlockBushBase(IBlock block) {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
 		setRegistryName(block.getRegistryName());
