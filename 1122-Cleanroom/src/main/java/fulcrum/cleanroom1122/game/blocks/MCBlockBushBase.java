@@ -44,7 +44,7 @@ public class MCBlockBushBase extends BlockBush implements IMCBlock {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		return block.$onBlockActivated((IMCWorld) worldIn, pos.getX(), pos.getY(), pos.getZ(), (IMCPlayer) playerIn, hitX, hitY, hitZ, MCDirection.getDirection(facing));
+		return block.onBlockActivated$((IMCWorld) worldIn, pos.getX(), pos.getY(), pos.getZ(), (IMCPlayer) playerIn, hitX, hitY, hitZ, MCDirection.getDirection(facing));
 	}
 
 	@Override
