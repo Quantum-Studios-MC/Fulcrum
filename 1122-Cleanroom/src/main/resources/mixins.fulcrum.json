@@ -1,0 +1,19 @@
+{
+	"required": true,
+	"minVersion": "0.7.11",
+	"package": "fulcrum.cleanroom1122.mixins",
+	"refmap": "mixins.fulcrum.refmap.json",
+	"target": "@env(DEFAULT)",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [],
+	"client": [],
+	"server": [
+		"MixinWorld",
+		"MixinItem",
+		"MixinItemStack",
+		"MixinEntityLivingBase",
+		"MixinTileEntity",
+		"MixinBlockContainer",
+		"MixinVec3i"
+	]
+}

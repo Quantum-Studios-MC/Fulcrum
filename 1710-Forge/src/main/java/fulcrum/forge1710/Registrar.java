@@ -1,20 +1,20 @@
 package fulcrum.forge1710;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import fulcrum.api.blocks.BlockBushBase;
 import fulcrum.api.blocks.BlockType;
-import fulcrum.api.game.IMCBlock;
-import fulcrum.api.game.IMCItem;
+import fulcrum.api.game.blocks.IMCBlock;
+import fulcrum.api.game.items.IMCItem;
 import fulcrum.api.registry.BlockRegistry;
 import fulcrum.api.registry.ItemRegistry;
 import fulcrum.api.game.MCRegistryType;
-import fulcrum.api.blocks.BlockBase;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
-import fulcrum.api.items.IItemBlock;
-import fulcrum.api.items.ItemBase;
 import fulcrum.api.items.ItemType;
-import fulcrum.forge1710.game.*;
+import fulcrum.forge1710.game.blocks.MCBlockBase;
+import fulcrum.forge1710.game.blocks.MCBlockBushBase;
+import fulcrum.forge1710.game.items.MCItemBase;
+import fulcrum.forge1710.game.items.MCItemBlockBase;
+import fulcrum.forge1710.util.MCMappings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
@@ -60,7 +60,7 @@ public class Registrar {
 	public static void registerItem() {
 		Registrar.registerItems();
 		for(IMCItem item : ITEMS.values()) {
-			GameRegistry.registerItem((Item) item, item.getItem().getRegistryName());
+			GameRegistry.registerItem((Item) item, item.getParentItem().getRegistryName());
 		}
 	}
 
@@ -68,11 +68,11 @@ public class Registrar {
 		MCMappings.loadMappings();
 		Registrar.registerBlocks();
 		for(IMCBlock block : BLOCKS.values()) {
-			if(block.getBlock().getItemBlockType() == ItemType.BASIC) {
-				GameRegistry.registerBlock((Block) block, MCItemBlockBase.class, block.getBlock().getRegistryName());
+			if(block.getParentBlock().getItemBlockType() == ItemType.BASIC) {
+				GameRegistry.registerBlock((Block) block, MCItemBlockBase.class, block.getParentBlock().getRegistryName());
 			}
-			if(block.getBlock().getItemBlockType() == ItemType.BLOCK) {
-				GameRegistry.registerBlock((Block) block, block.getBlock().getRegistryName());
+			if(block.getParentBlock().getItemBlockType() == ItemType.BLOCK) {
+				GameRegistry.registerBlock((Block) block, block.getParentBlock().getRegistryName());
 			}
 		}
 	}

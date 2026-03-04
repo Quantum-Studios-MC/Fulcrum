@@ -1,20 +1,12 @@
 package fulcrum.cleanroom1122;
 
-import com.author.examplemod.ModEntry;
-import fulcrum.api.game.IMCItem;
-import fulcrum.api.game.IMCItemBlock;
-import fulcrum.cleanroom1122.game.MCItemBase;
-import fulcrum.cleanroom1122.game.MCItemBlockBase;
-import fulcrum.cleanroom1122.game.MCMappings;
+import fulcrum.api.game.items.IMCItem;
+import fulcrum.api.game.items.IMCItemBlock;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class ModelRegistrar {
 	public static void registerItemBlockModels() {
@@ -34,7 +26,7 @@ public class ModelRegistrar {
 			(Item) item,
 			0,
 			new ModelResourceLocation(
-				new ResourceLocation(item.getItem().getModName() + ":" + item.getItem().getRegistryName().toString()),
+				new ResourceLocation(item.getParentItem().getModName() + ":" + item.getParentItem().getRegistryName().toString()),
 				"inventory"
 			)
 		);

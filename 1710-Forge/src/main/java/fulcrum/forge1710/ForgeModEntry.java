@@ -4,7 +4,6 @@ import com.author.examplemod.ModEntry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.*;
 import fulcrum.api.PluginHooks;
-import fulcrum.forge1710.game.MCMappings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

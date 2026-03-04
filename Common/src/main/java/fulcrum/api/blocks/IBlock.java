@@ -2,8 +2,11 @@ package fulcrum.api.blocks;
 
 import fulcrum.api.IRegistryObject;
 import fulcrum.api.creativetabs.ICreativeTab;
+import fulcrum.api.game.entities.player.IMCPlayer;
+import fulcrum.api.game.world.IMCWorld;
 import fulcrum.api.items.IItemBlock;
 import fulcrum.api.items.ItemType;
+import fulcrum.api.util.Direction;
 
 public interface IBlock extends IRegistryObject {
 	IItemBlock getItemBlock();
@@ -41,4 +44,6 @@ public interface IBlock extends IRegistryObject {
 	float getHardness();
 
 	float getResistance();
+
+	default boolean $onBlockActivated(IMCWorld world, int x, int y, int z, IMCPlayer player, float subX, float subY, float subZ, Direction side) { return false; };
 }

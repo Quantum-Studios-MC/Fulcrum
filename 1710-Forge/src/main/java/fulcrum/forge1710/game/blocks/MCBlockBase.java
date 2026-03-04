@@ -1,12 +1,17 @@
-package fulcrum.forge1710.game;
+package fulcrum.forge1710.game.blocks;
 
 import fulcrum.api.blocks.BlockModelType;
-import fulcrum.api.game.IMCBlock;
-import fulcrum.api.game.IMCRegistryObject;
+import fulcrum.api.game.blocks.IMCBlock;
 import fulcrum.api.IRegistryObject;
 import fulcrum.api.blocks.IBlock;
+import fulcrum.api.game.entities.player.IMCPlayer;
+import fulcrum.api.game.world.IMCWorld;
+import fulcrum.forge1710.util.MCDirection;
+import fulcrum.forge1710.util.MCMappings;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 
 public class MCBlockBase extends Block implements IMCBlock {
 	private final IBlock block;
@@ -41,6 +46,11 @@ public class MCBlockBase extends Block implements IMCBlock {
 	}
 
 	@Override
+	public boolean onBlockActivated(World worldIn, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
+		return block.$onBlockActivated((IMCWorld) worldIn, x, y, z, (IMCPlayer) player, subX, subY, subZ, MCDirection.getDirection(side));
+	}
+
+	@Override
 	public int getRenderType() {
 		if(block.getModelType() == BlockModelType.CUBE) {
 			return 0;
@@ -51,7 +61,7 @@ public class MCBlockBase extends Block implements IMCBlock {
 		return super.getRenderType();
 	}
 
-	public IBlock getBlock() {
+	public IBlock getParentBlock() {
 		return block;
 	}
 

@@ -1,4 +1,4 @@
-package fulcrum.cleanroom1122.game;
+package fulcrum.cleanroom1122.util;
 
 import fulcrum.api.blocks.BlockMaterial;
 import fulcrum.api.blocks.BlockSound;
@@ -6,7 +6,6 @@ import fulcrum.api.blocks.IBlockMaterial;
 import fulcrum.api.blocks.IBlockSound;
 import fulcrum.api.creativetabs.CreativeTab;
 import fulcrum.api.creativetabs.ICreativeTab;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

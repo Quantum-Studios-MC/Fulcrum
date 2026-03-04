@@ -9,7 +9,7 @@ import fulcrum.api.recipes.IRecipe;
 import fulcrum.api.recipes.IShapedRecipe;
 import fulcrum.api.recipes.IShapelessRecipe;
 import fulcrum.api.registry.RecipeRegistry;
-import fulcrum.forge1710.game.MCItemBase;
+import fulcrum.forge1710.game.items.MCItemBase;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;

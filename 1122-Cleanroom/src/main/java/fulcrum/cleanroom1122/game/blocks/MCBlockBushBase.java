@@ -1,12 +1,19 @@
-package fulcrum.cleanroom1122.game;
+package fulcrum.cleanroom1122.game.blocks;
 
 import fulcrum.api.IRegistryObject;
 import fulcrum.api.blocks.IBlock;
-import fulcrum.api.game.IMCBlock;
-import fulcrum.api.game.IMCRegistryObject;
-import net.minecraft.block.Block;
+import fulcrum.api.game.blocks.IMCBlock;
+import fulcrum.api.game.entities.player.IMCPlayer;
+import fulcrum.api.game.world.IMCWorld;
+import fulcrum.cleanroom1122.util.MCDirection;
+import fulcrum.cleanroom1122.util.MCMappings;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class MCBlockBushBase extends BlockBush implements IMCBlock {
 	private final IBlock block;
@@ -36,7 +43,12 @@ public class MCBlockBushBase extends BlockBush implements IMCBlock {
 	}
 
 	@Override
-	public IBlock getBlock() {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		return block.$onBlockActivated((IMCWorld) worldIn, pos.getX(), pos.getY(), pos.getZ(), (IMCPlayer) playerIn, hitX, hitY, hitZ, MCDirection.getDirection(facing));
+	}
+
+	@Override
+	public IBlock getParentBlock() {
 		return block;
 	}
 

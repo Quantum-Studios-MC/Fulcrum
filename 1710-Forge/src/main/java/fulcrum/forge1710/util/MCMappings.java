@@ -1,4 +1,4 @@
-package fulcrum.forge1710.game;
+package fulcrum.forge1710.util;
 
 import fulcrum.api.blocks.BlockMaterial;
 import fulcrum.api.blocks.BlockSound;

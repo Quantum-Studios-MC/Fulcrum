@@ -1,10 +1,9 @@
-package fulcrum.forge1710.game;
+package fulcrum.cleanroom1122.game.items;
 
-import fulcrum.api.game.IMCItem;
-import fulcrum.api.game.IMCRegistryObject;
+import fulcrum.api.game.items.IMCItem;
 import fulcrum.api.IRegistryObject;
 import fulcrum.api.items.IItem;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import fulcrum.cleanroom1122.util.MCMappings;
 import net.minecraft.item.Item;
 
 public class MCItemBase extends Item implements IMCItem {
@@ -12,19 +11,15 @@ public class MCItemBase extends Item implements IMCItem {
 
 	public MCItemBase(IItem item) {
 		this.item = item;
+		setRegistryName(item.getRegistryName());
+		setTranslationKey(item.getModName() + "." + item.getRegistryName());
 		setMaxStackSize(item.getMaxStackSize());
-		setUnlocalizedName(item.getModName() + "." + item.getRegistryName());
 		setCreativeTab(MCMappings.getCreativeTab(item.getCreativeTab()));
 	}
 
 	@Override
-	public IItem getItem() {
+	public IItem getParentItem() {
 		return item;
-	}
-
-	@Override
-	public void registerIcons(IIconRegister register) {
-		this.itemIcon = register.registerIcon(item.getModName() + ":" + item.getTextureName());
 	}
 
 	@Override
