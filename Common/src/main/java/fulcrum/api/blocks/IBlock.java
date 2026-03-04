@@ -45,5 +45,5 @@ public interface IBlock extends IRegistryObject {
 
 	float getResistance();
 
-	default boolean $onBlockActivated(IMCWorld world, int x, int y, int z, IMCPlayer player, float subX, float subY, float subZ, Direction side) { return false; };
+	default boolean onBlockActivated$(IMCWorld world, int x, int y, int z, IMCPlayer player, float subX, float subY, float subZ, Direction side) { return false; };
 }
