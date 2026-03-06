@@ -2,22 +2,30 @@ package fulcrum.cleanroom1122.game.blocks;
 
 import fulcrum.api.IRegistryObject;
 import fulcrum.api.blocks.IBlock;
+import fulcrum.api.blocks.IBlockTile;
 import fulcrum.api.game.blocks.IMCBlock;
+import fulcrum.api.game.blocks.IMCBlockTile;
 import fulcrum.api.game.entities.player.IMCPlayer;
+import fulcrum.api.game.tileentities.IMCTile;
 import fulcrum.api.game.world.IMCWorld;
+import fulcrum.cleanroom1122.game.tileentities.TileEntityBase;
+import fulcrum.cleanroom1122.game.tileentities.TileEntityTickableBase;
 import fulcrum.cleanroom1122.util.MCDirection;
 import fulcrum.cleanroom1122.util.MCMappings;
-import net.minecraft.block.BlockBush;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class MCBlockBushBase extends BlockBush implements IMCBlock {
-	private final IBlock block;
-	public MCBlockBushBase(IBlock block) {
+public class MCBlockTileBase extends BlockContainer implements IMCBlockTile {
+	private final IBlockTile block;
+	public MCBlockTileBase(IBlockTile block) {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
 		setRegistryName(block.getRegistryName());
@@ -55,5 +63,18 @@ public class MCBlockBushBase extends BlockBush implements IMCBlock {
 	@Override
 	public IRegistryObject getDelegateRegistryObject$fulcrum() {
 		return block;
+	}
+
+	@Override
+	public IMCTile getTileInBlock$(IMCWorld world, int x, int y, int z) {
+		return (IMCTile) ((World) world).getTileEntity(new BlockPos(x, y, z));
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		if(block.getTile().isTickable()) {
+			return new TileEntityTickableBase(block.getTile());
+		}
+		return new TileEntityBase(block.getTile());
 	}
 }

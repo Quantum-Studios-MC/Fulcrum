@@ -13,6 +13,9 @@
 		"MixinItemStack",
 		"MixinTileEntity",
 		"MixinBlockContainer",
-		"MixinEntityPlayer"
+		"MixinEntityPlayer",
+		"MixinNBTBase",
+		"MixinNBTTagCompound",
+		"MixinNBTTagList"
 	]
 }

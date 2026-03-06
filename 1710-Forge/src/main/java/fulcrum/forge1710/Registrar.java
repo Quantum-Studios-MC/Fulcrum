@@ -1,7 +1,9 @@
 package fulcrum.forge1710;
 
+import com.author.examplemod.ModEntry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fulcrum.api.blocks.BlockType;
+import fulcrum.api.blocks.IBlockTile;
 import fulcrum.api.game.blocks.IMCBlock;
 import fulcrum.api.game.items.IMCItem;
 import fulcrum.api.registry.BlockRegistry;
@@ -12,8 +14,10 @@ import fulcrum.api.items.IItem;
 import fulcrum.api.items.ItemType;
 import fulcrum.forge1710.game.blocks.MCBlockBase;
 import fulcrum.forge1710.game.blocks.MCBlockBushBase;
+import fulcrum.forge1710.game.blocks.MCBlockTileBase;
 import fulcrum.forge1710.game.items.MCItemBase;
 import fulcrum.forge1710.game.items.MCItemBlockBase;
+import fulcrum.forge1710.game.tileentities.TileEntityBase;
 import fulcrum.forge1710.util.MCMappings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,6 +41,9 @@ public class Registrar {
 		Collection<IBlock> list = BlockRegistry.getList();
 		for(IBlock item : list) {
 			IMCBlock block = null;
+			if(item instanceof IBlockTile tile) {
+				block = new MCBlockTileBase(tile);
+			}
 			if(item.getType() == BlockType.BASIC) {
 				block = new MCBlockBase(item);
 			}
@@ -75,5 +82,9 @@ public class Registrar {
 				GameRegistry.registerBlock((Block) block, block.getParentBlock().getRegistryName());
 			}
 		}
+	}
+
+	public static void registerTile() {
+		GameRegistry.registerTileEntity(TileEntityBase.class, ModEntry.modid + ".tileentitybase");
 	}
 }

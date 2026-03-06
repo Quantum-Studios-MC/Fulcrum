@@ -1,5 +1,6 @@
 package fulcrum.cleanroom1122;
 
+import com.author.examplemod.ModEntry;
 import fulcrum.api.blocks.BlockType;
 import fulcrum.api.game.blocks.IMCBlock;
 import fulcrum.api.game.items.IMCItem;
@@ -14,10 +15,14 @@ import fulcrum.cleanroom1122.game.blocks.MCBlockBase;
 import fulcrum.cleanroom1122.game.blocks.MCBlockBushBase;
 import fulcrum.cleanroom1122.game.items.MCItemBase;
 import fulcrum.cleanroom1122.game.items.MCItemBlockBase;
+import fulcrum.cleanroom1122.game.tileentities.TileEntityBase;
+import fulcrum.cleanroom1122.game.tileentities.TileEntityTickableBase;
 import fulcrum.cleanroom1122.util.MCMappings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Collection;
@@ -86,5 +91,10 @@ public class Registrar {
 
 		IForgeRegistry<Block> reg = event.getRegistry();
 		reg.registerAll(BLOCKS.values().toArray(new Block[0]));
+	}
+
+	public static void registerTile() {
+		GameRegistry.registerTileEntity(TileEntityBase.class, new ResourceLocation(ModEntry.modid + ".tileentitybase"));
+		GameRegistry.registerTileEntity(TileEntityTickableBase.class, new ResourceLocation(ModEntry.modid + ".tileentitytickablebase"));
 	}
 }

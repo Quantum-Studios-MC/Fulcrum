@@ -16,6 +16,8 @@ public abstract class MixinWorld implements IMCWorld {
 	public abstract boolean setBlock(int x, int y, int z, Block blockIn, int metadataIn, int flags);
 	@Shadow
 	public abstract TileEntity getTileEntity(int x, int y, int z);
+	@Shadow
+	public abstract Block getBlock(int p_147439_1_, int p_147439_2_, int p_147439_3_);
 
 	@Override
 	public boolean setBlock$(IMCPos pos, IMCBlock block) {
@@ -30,5 +32,20 @@ public abstract class MixinWorld implements IMCWorld {
 	@Override
 	public IMCTile getTile$(int x, int y, int z) {
 		return (IMCTile) getTileEntity(x, y, z);
+	}
+
+	@Override
+	public IMCTile getTile$(IMCPos pos) {
+		return (IMCTile) getTileEntity(pos.getX$(), pos.getY$(), pos.getZ$());
+	}
+
+	@Override
+	public IMCBlock getBlock$(int x, int y, int z) {
+		return (IMCBlock) getBlock(x, y, z);
+	}
+
+	@Override
+	public IMCBlock getBlock$(IMCPos pos) {
+		return (IMCBlock) getBlock(pos.getX$(), pos.getY$(), pos.getZ$());
 	}
 }

@@ -3,6 +3,7 @@ package fulcrum.forge1710;
 import com.author.examplemod.ModEntry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.*;
+import fulcrum.api.MCVersion;
 import fulcrum.api.PluginHooks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +17,8 @@ public class ForgeModEntry {
 	}
 
 	public static void runMain() {
+		MCVersion.setVersion(MCVersion.MC_1_7_10);
+
 		PluginHooks.initialize();
 
 		PluginHooks.generateBlocks();
@@ -28,6 +31,7 @@ public class ForgeModEntry {
 	public void preInit(FMLPreInitializationEvent event) {
 		Registrar.registerBlock();
 		Registrar.registerItem();
+		Registrar.registerTile();
 	}
 
 	@Mod.EventHandler

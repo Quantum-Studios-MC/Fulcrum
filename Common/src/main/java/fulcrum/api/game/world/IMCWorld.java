@@ -7,5 +7,8 @@ import fulcrum.api.game.util.IMCPos;
 public interface IMCWorld {
 	boolean setBlock$(IMCPos pos, IMCBlock block);
 	boolean setBlock$(int x, int y, int z, IMCBlock block);
+	IMCBlock getBlock$(int x, int y, int z);
+	IMCBlock getBlock$(IMCPos pos);
 	IMCTile getTile$(int x, int y, int z);
+	IMCTile getTile$(IMCPos pos);
 }

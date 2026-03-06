@@ -2,6 +2,7 @@ package fulcrum.cleanroom1122;
 
 import com.author.examplemod.ExampleMod;
 import com.author.examplemod.ModEntry;
+import fulcrum.api.MCVersion;
 import fulcrum.api.PluginHooks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -24,6 +25,8 @@ public class CleanroomModEntry {
 	}
 
 	public static void runMain() {
+		MCVersion.setVersion(MCVersion.MC_1_12_2);
+
 		PluginHooks.initialize();
 
 		PluginHooks.generateBlocks();
@@ -34,6 +37,7 @@ public class CleanroomModEntry {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		Registrar.registerTile();
 	}
 
 	@Mod.EventHandler

@@ -1,22 +1,26 @@
 package fulcrum.forge1710.game.blocks;
 
-import fulcrum.api.blocks.BlockModelType;
-import fulcrum.api.game.blocks.IMCBlock;
 import fulcrum.api.IRegistryObject;
+import fulcrum.api.blocks.BlockModelType;
 import fulcrum.api.blocks.IBlock;
+import fulcrum.api.blocks.IBlockTile;
+import fulcrum.api.game.blocks.IMCBlockTile;
 import fulcrum.api.game.entities.player.IMCPlayer;
+import fulcrum.api.game.tileentities.IMCTile;
 import fulcrum.api.game.world.IMCWorld;
+import fulcrum.forge1710.game.tileentities.TileEntityBase;
 import fulcrum.forge1710.util.MCDirection;
 import fulcrum.forge1710.util.MCMappings;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class MCBlockBase extends Block implements IMCBlock {
-	private final IBlock block;
+public class MCBlockTileBase extends BlockContainer implements IMCBlockTile {
+	private final IBlockTile block;
 
-	public MCBlockBase(IBlock block) {
+	public MCBlockTileBase(IBlockTile block) {
 		super(MCMappings.getMaterial(block.getMaterial()));
 		this.block = block;
 		setUnlocalizedName(block.getModName() + "." + block.getRegistryName());
@@ -68,5 +72,15 @@ public class MCBlockBase extends Block implements IMCBlock {
 	@Override
 	public IRegistryObject getDelegateRegistryObject$fulcrum() {
 		return block;
+	}
+
+	@Override
+	public IMCTile getTileInBlock$(IMCWorld world, int x, int y, int z) {
+		return (IMCTile) ((World) world).getTileEntity(x, y, z);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileEntityBase(block.getTile());
 	}
 }
