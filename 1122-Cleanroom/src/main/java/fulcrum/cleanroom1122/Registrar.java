@@ -2,6 +2,7 @@ package fulcrum.cleanroom1122;
 
 import com.author.examplemod.ModEntry;
 import fulcrum.api.blocks.BlockType;
+import fulcrum.api.blocks.IBlockTile;
 import fulcrum.api.game.blocks.IMCBlock;
 import fulcrum.api.game.items.IMCItem;
 import fulcrum.api.game.items.IMCItemBlock;
@@ -13,6 +14,7 @@ import fulcrum.api.items.IItem;
 import fulcrum.api.items.ItemType;
 import fulcrum.cleanroom1122.game.blocks.MCBlockBase;
 import fulcrum.cleanroom1122.game.blocks.MCBlockBushBase;
+import fulcrum.cleanroom1122.game.blocks.MCBlockTileBase;
 import fulcrum.cleanroom1122.game.items.MCItemBase;
 import fulcrum.cleanroom1122.game.items.MCItemBlockBase;
 import fulcrum.cleanroom1122.game.tileentities.TileEntityBase;
@@ -45,6 +47,9 @@ public class Registrar {
 		Collection<IBlock> list = BlockRegistry.getList();
 		for(IBlock item : list) {
 			IMCBlock block = null;
+			if(item instanceof IBlockTile tile) {
+				block = new MCBlockTileBase(tile);
+			}
 			if(item.getType() == BlockType.BASIC) {
 				block = new MCBlockBase(item);
 			}
