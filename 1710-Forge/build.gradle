@@ -4,6 +4,7 @@ archivesBaseName = "${mod_name}-Forge-1.7.10"
 dependencies {
 	implementation project(":Common")
 	modImplementation("com.github.LegacyModdingMC.UniMixins:unimixins-all-1.7.10:0.2.1:dev")
+	modImplementation("com.github.GTNewHorizons:GTNHLib:0.9.36:dev")
 
 	annotationProcessor "com.github.bsideup.jabel:jabel-javac-plugin:${jabel_version}"
 	compileOnly "com.github.bsideup.jabel:jabel-javac-plugin:${jabel_version}"
