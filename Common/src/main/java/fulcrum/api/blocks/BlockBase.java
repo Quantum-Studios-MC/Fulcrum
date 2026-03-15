@@ -16,7 +16,7 @@ public class BlockBase implements IBlock {
 	private float hardness;
 	private float resistance;
 	private BlockType blockType;
-	private BlockModelType blockModelType;
+	private BlockModel blockModel;
 	private ItemType itemBlockType;
 	private boolean isFullCube;
 	private boolean isOpaqueCube;
@@ -30,7 +30,7 @@ public class BlockBase implements IBlock {
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setItemBlockType(ItemType.BLOCK);
-		setModelType(BlockModelType.CUBE);
+		setModel(BlockModel.CUBE);
 		setType(BlockType.BASIC);
 		setFullCube(true);
 		setOpaqueCube(true);
@@ -57,8 +57,8 @@ public class BlockBase implements IBlock {
 	}
 
 	@Override
-	public BlockModelType getModelType() {
-		return blockModelType;
+	public BlockModel getBlockModel() {
+		return blockModel;
 	}
 
 	@Override
@@ -141,8 +141,8 @@ public class BlockBase implements IBlock {
 		return this;
 	}
 
-	public BlockBase setModelType(BlockModelType blockType) {
-		this.blockModelType = blockType;
+	public BlockBase setModel(BlockModel blockType) {
+		this.blockModel = blockType;
 		return this;
 	}
 

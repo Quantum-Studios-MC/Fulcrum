@@ -1,9 +1,8 @@
 package fulcrum.cleanroom1122.gen;
 
-import fulcrum.api.blocks.BlockModelType;
+import fulcrum.api.blocks.BlockModel;
 import fulcrum.api.registry.BlockRegistry;
 import fulcrum.api.registry.ItemRegistry;
-import fulcrum.api.blocks.BlockType;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.items.IItem;
 import fulcrum.api.items.IItemBlock;
@@ -36,10 +35,10 @@ public class ModelGenerator {
 		for(IBlock iblock : BlockRegistry.getList()) {
 			try {
 				generateSimpleBlockStateJson(iblock);
-				if(iblock.getModelType() == BlockModelType.CUBE) {
+				if(iblock.getBlockModel() == BlockModel.CUBE) {
 					generateSimpleBlockJson(iblock);
 				}
-				if(iblock.getModelType() == BlockModelType.CROSS) {
+				if(iblock.getBlockModel() == BlockModel.CROSS) {
 					generateSimpleCrossBlockJson(iblock);
 				}
 

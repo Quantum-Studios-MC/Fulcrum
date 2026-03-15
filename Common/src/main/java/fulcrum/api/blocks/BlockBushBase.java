@@ -6,7 +6,7 @@ public class BlockBushBase extends BlockBase {
 	public BlockBushBase(String registryName) {
 		super(registryName);
 		setType(BlockType.BUSH);
-		setModelType(BlockModelType.CROSS);
+		setModel(BlockModel.CROSS);
 		setItemBlockType(ItemType.BASIC);
 		setFullCube(false);
 		setOpaqueCube(false);

@@ -27,7 +27,7 @@ public interface IBlock extends IRegistryObject {
 		return BlockType.BASIC;
 	}
 
-	BlockModelType getModelType();
+	IBlockModel getBlockModel();
 
 	ItemType getItemBlockType();
 

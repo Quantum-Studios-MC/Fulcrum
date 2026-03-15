@@ -1,7 +1,7 @@
 package fulcrum.forge1710.game.blocks;
 
 import fulcrum.api.IRegistryObject;
-import fulcrum.api.blocks.BlockModelType;
+import fulcrum.api.blocks.BlockModel;
 import fulcrum.api.blocks.IBlock;
 import fulcrum.api.blocks.IBlockTile;
 import fulcrum.api.game.blocks.IMCBlockTile;
@@ -56,10 +56,10 @@ public class MCBlockTileBase extends BlockContainer implements IMCBlockTile {
 
 	@Override
 	public int getRenderType() {
-		if(block.getModelType() == BlockModelType.CUBE) {
+		if(block.getBlockModel() == BlockModel.CUBE) {
 			return 0;
 		}
-		if(block.getModelType() == BlockModelType.CROSS) {
+		if(block.getBlockModel() == BlockModel.CROSS) {
 			return 1;
 		}
 		return super.getRenderType();

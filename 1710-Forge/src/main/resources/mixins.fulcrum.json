@@ -5,17 +5,17 @@
 	"refmap": "mixins.fulcrum.refmap.json",
 	"target": "@env(DEFAULT)",
 	"compatibilityLevel": "JAVA_8",
-	"mixins": [],
-	"client": [],
-	"server": [
-		"MixinWorld",
-		"MixinItem",
-		"MixinItemStack",
-		"MixinTileEntity",
+	"mixins": [
 		"MixinBlockContainer",
 		"MixinEntityPlayer",
+		"MixinItem",
+		"MixinItemStack",
 		"MixinNBTBase",
 		"MixinNBTTagCompound",
-		"MixinNBTTagList"
-	]
+		"MixinNBTTagList",
+		"MixinTileEntity",
+		"MixinWorld"
+	],
+	"client": [],
+	"server": []
 }
